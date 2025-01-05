@@ -16,7 +16,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px; /* Space between containers */
+  gap: 0px; /* Space between containers */
 }
 
 /* Header container styles */
@@ -30,12 +30,13 @@ body {
 .dropdowns-container {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Space between dropdowns */
+  padding: 20px;
+  gap: 0px; /* Space between dropdowns */
 }
 
 /* Button container styles */
 .button-container {
-  padding: 20px;
+  padding: 15px;
   display: flex;
   justify-content: center;
 }
@@ -43,10 +44,10 @@ body {
 /* Dropdown styles */
 select {
   display: inline-block; /* Ensure dropdown does not stretch */
-  padding: 10px;
+  padding: 5px;
   font-size: 16px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 2px;
   background-color: white;
   text-align: left;
   width: auto; /* Dynamically adjust to text width */
@@ -121,8 +122,8 @@ button {
 }
 
 button:disabled {
-  background-color: #ccc;
-  color: #666;
+  background-color: #444444;
+  color: #cccccc;
   cursor: not-allowed;
 }
 
@@ -134,8 +135,8 @@ button:not(:disabled) {
 /* Creature display styles */
 #creature-display {
   position: relative;
-  width: 90vmin; /* Scale dynamically to 90% of the smaller screen dimension */
-  height: 90vmin;
+  width: 95vmin; /* Scale dynamically to 95% of the smaller screen dimension */
+  height: 95vmin;
   margin: 0 auto; /* Center the display horizontally */
   opacity: 0.8;
 }
@@ -151,62 +152,24 @@ button:not(:disabled) {
 @media (max-width: 768px) {
   /* Adjust container spacing for smaller screens */
   .container {
-    gap: 15px;
+    gap: 0px;
   }
 
   .dropdowns-container {
-    gap: 10px;
+    gap: 0px;
   }
 
   button {
-    font-size: 16px;
+    font-size: 20px;
   }
-}
-
-/* Modal container styles */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  display: none; /* Hidden by default */
-  justify-content: center;
-  align-items: center;
-  z-index: 1000; /* Ensure it appears above other elements */
-}
-
-/* Modal content styles */
-.modal-content {
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  width: 90%;
-  max-width: 500px;
-  position: relative;
-}
-
-/* Close button styles */
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 20px;
-  color: #333;
-  cursor: pointer;
-  border: none;
-  background: none;
-  font-weight: bold;
 }
 
 /* Dynamic button styles */
 .dynamic-button {
   display: none; /* Hidden by default */
-  margin-top: 10px;
-  padding: 8px 12px;
-  font-size: 16px;
+  margin-top: 0px;
+  padding: 0px;
+  font-size: 20px;
   border: none;
   border-radius: 2px;
   cursor: pointer;
