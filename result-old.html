@@ -5,18 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deity View</title>
     <style>
-        /* Ensure body is styled for text-driven size */
         body {
-            margin: 0;
-            padding: 0;
-            min-height: 100dvh; /* Use dvh for better mobile compatibility */
-            font-family: 'IM Fell English SC', serif;
-            text-align: center;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-repeat: no-repeat;
-            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #ffffff;
         }
 
         .container {
@@ -28,7 +23,7 @@
             max-width: 95%; /* Dynamically adjust based on screen size */
             display: flex;
             flex-direction: column;
-            gap: 0px; /* Space between containers */
+            gap: 5px; /* Space between containers */
             text-align: justify;
             font-family: 'IM Fell English SC', serif;
             letter-spacing: .1em;
@@ -45,7 +40,7 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
-            margin: 0px;
+            margin: 10px auto;
         }
 
         #creature-display img {
@@ -53,6 +48,75 @@
             height: 100%;
             object-fit: contain;
             position: absolute;
+        }
+
+        input[type="text"] {
+            font-size: 24px;
+            text-align: center;
+            padding: 0px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            z-index:100;
+        }
+
+        h1#creature-name {
+            margin: 10px 0;
+            font-size: 24px;
+            cursor: pointer;
+            color: #000000;
+            z-index: 100;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #000000;
+            color: white;
+            transition: background-color 0.3s ease;
+            display: none;
+            z-index: 100;
+        }
+
+        button:hover {
+            background-color: #030303;
+            z-index: 100;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 80%;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #333;
         }
 
         .overlay-container {
@@ -63,7 +127,7 @@
             height: 100%;
             object-fit: cover;
             mix-blend-mode: multiply;
-            z-index: 50; /* Set this above most things */
+            z-index: 2; /* Set this above most things */
         }
 
 
@@ -75,12 +139,24 @@
 </head>
 <body>
     <img src="images/paper-bkgd.jpg" alt="Background" class="overlay-container" />
+    <!--<div class="overlay-container">
+        <img src="/images/parch_bkgd_2.jpg">
+    </div>-->
     
     <div class="container">
         <div id="name-container"></div>
+        <!-- old button <button id="song-button"></button> -->
         <div id="creature-display"></div>
         <div class="story-container">
             <p id="story-text"></p>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modal-text"></p>
         </div>
     </div>
 
@@ -90,6 +166,10 @@
                 "1": "The god's head was crowned in radiant light, his visage dour and penitent, the tendrils of his beard as old as the mountains.",
                 "2": "The divine embodiment of the untamed wild, mighty antlers sprung from its beastly head.",
             },
+            /* hue: {
+                "1": "Its vast form was tinged in a dusky hue.",
+                "2": "Hey, one more sentence!",
+            }, */
             torso: {
                 "1": "Its chest was shrouded in ancient threadbare cloth.",
                 "2": "Sturdy iron armor wrapped its broad trunk.",
@@ -112,8 +192,12 @@
         const storyText = document.getElementById('story-text');
         const creatureDisplay = document.getElementById('creature-display');
         const nameContainer = document.getElementById('name-container');
+        // const songButton = document.getElementById('song-button');
+        const modal = document.getElementById('modal');
+        const modalText = document.getElementById('modal-text');
+        const closeModal = document.querySelector('.close');
 
-        // Display name or input - outdated, still displays name
+        // Display name or input
         if (creatureData.name) {
             displayName(creatureData.name);
         } else {
@@ -166,12 +250,62 @@
             return text.replace(/\[name\]/g, name);
         }
 
+        /* Show modal with dynamic text
+        songButton.addEventListener('click', () => {
+            const name = creatureData.name || "Unnamed Creature";
+            const songLines = displayOrder.map((key) => {
+                const value = creatureData[key];
+                if (value && textMap[key]?.[value]) {
+                    return replacePlaceholders(textMap[key][value], name);
+                }
+                return ""; // Default behavior if no value exists
+            });
+
+            modalText.textContent = songLines.filter(Boolean).join(" ");
+            modal.style.display = 'flex';
+        });
+
+        // Close modal
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+        - this whole sectoin is obsolete - */
 
         // Display the creature name
         function displayName(name) {
-            nameContainer.innerHTML = `<h3 id="creature-name">${name}</h3>`;
+            nameContainer.innerHTML = `<h1 id="creature-name">${name}</h1>`;
+            /* songButton.textContent = `Read the Song of ${name}`;
+            songButton.style.display = "block"; */
         }
-        
+
+        // Display input field for name
+        function displayInput(existingName = "") {
+            nameContainer.innerHTML = `<input type="text" id="name-input" value="${existingName}" autofocus />`;
+            const nameInput = document.getElementById('name-input');
+            nameInput.addEventListener('blur', saveName);
+            nameInput.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    saveName();
+                }
+            });
+        }
+
+        // Save the name
+        function saveName() {
+            const nameInput = document.getElementById('name-input');
+            const name = nameInput.value.trim();
+            if (name) {
+                creatureData.name = name;
+                localStorage.setItem('creatureData', JSON.stringify(creatureData));
+                displayName(name);
+            }
+        }
     </script>
 </body>
 </html>
