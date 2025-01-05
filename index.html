@@ -5,26 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Deity Book</title>
     <style>
-        /* Flexbox centering and full viewport setup */
+        /* Ensure body is styled for text-driven size */
         body {
-            display: flex;
-            flex-direction: column; /* Stack child elements vertically */
-            justify-content: center;
-            align-items: center;
             margin: 0;
             padding: 0;
-            height: 100svh;
+            min-height: 100dvh; /* Use dvh for better mobile compatibility */
             font-family: 'IM Fell English SC', serif;
             text-align: center;
-        }
-        .background-img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            min-width: 100svw;
-            min-height: 100svh;
-            object-fit: cover;
-            z-index: -1; /* Ensures it's in the background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('images/paper-bkgd.jpg');
+            background-size: cover; /* Proportional scaling */
+            background-position: center;
+            background-repeat: no-repeat;
+            flex-direction: column;
         }
         .button {
             text-decoration: none;
@@ -41,6 +36,9 @@
             white-space: nowrap; /* Prevent wrapping for dynamic text */
             z-index: 3;
         }
+        p.padding {
+            padding: 20px;
+        }
         
     </style>
     <!-- Link Google Fonts -->
@@ -48,22 +46,18 @@
 </head>
 
 <body>
-    <img src="images/paper-bkgd.jpg" alt="Background" class="background-img" />
-
-    <p><span style="letter-spacing:.75em;font-size:2.5vw">THE</span></p>
+    <p><span style="letter-spacing:.75em;font-size:2.5vw;">THE</span></p>
     <p><span style="letter-spacing:.75em;font-size:3vw;font-style: italic;">FORGOTTEN</span></p>
-    <p><span style="letter-spacing:1.1em;font-size:5vw">TOME</span></p>
-    <p><span style="letter-spacing:.75em;font-size:2.5vw">Of Selected</span>
+    <p><span style="letter-spacing:1.1em;font-size:5vw;">TOME</span></p>
+    <p><span style="letter-spacing:.75em;font-size:2.5vw;">Of Selected</span>
     <br><span style="letter-spacing:.75em;font-size:2.5vw;font-style: italic;">& Various</span></p>
-    <p><span style="letter-spacing:.5em;font-size:4vw">DEITIES, IDOLS, 
+    <p><span style="letter-spacing:.5em;font-size:4vw;">DEITIES, IDOLS, 
     <br>& DEMI-GODS</span></p>
-    <!-- <p><span style="mix-blend-mode:multiply;"><img src="images/triton-smallest.png"/></span>
-    </p> -->
-    <p>a Recombinant, Variable, and Ever-changing Compendium</p>
-    <a href="/deity_tome/entry.html" class="button">Consult the Tome</a>
-    <p><span style="letter-spacing: .5em;font-style: italic;"> PHILADELPHIA,</span><span style="letter-spacing:.25em">Prov. of Penna.</span></p>
-    <p><span style="letter-spacing: .5em;"> MDCCXXV</span></p>
-    <p><span style="font-style: italic;">hitherto unpublished</span>
+    <p><span style="letter-spacing:.05em;font-size:2.5vw;">a Recombinant, Variable, and Ever-changing Compendium</span>
+    <br><span style="letter-spacing:.05em;font-size:2.5vw;font-style:italic;">hitherto unpublished</span></p>
+    <p><span style="letter-spacing: .5em;font-size:2vw;font-style: italic;"> PHILADELPHIA,</span><span style="letter-spacing:.25em;font-size:2vw;">Prov. of Penna.</span>
+    <br><span style="letter-spacing: .5em;font-size:2vw;"> MDCCXXV</span>
+    <p class="padding"><a href="/deity_tome/entry.html" class="button">Consult the Tome</a>
     </p>
   
 </body>
