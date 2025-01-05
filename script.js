@@ -18,7 +18,7 @@ function saveData() {
     });
     data.name = nameInput.value.trim(); // Save the name input
     localStorage.setItem('creatureData', JSON.stringify(data));
-    window.location.href = "result.html";
+    window.location.href = "/deity_tome/result.html";
 }
 
 // Add event listeners to dropdowns, name input, and button
