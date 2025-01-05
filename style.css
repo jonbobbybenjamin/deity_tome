@@ -58,6 +58,18 @@ h1 {
   font-family: 'IM Fell English SC', serif;
 }
 
+h2 {
+  font-family: 'IM Fell English SC', serif;
+}
+
+h3 {
+  font-family: 'IM Fell English SC', serif;
+}
+
+h4 {
+  font-family: 'IM Fell English SC', serif;
+}
+
 label {
   font-family: 'IM Fell English SC', serif;
 }
@@ -67,10 +79,6 @@ select option {
 }
 
 button {
-  font-family: 'IM Fell English SC', serif;
-}
-
-h4 {
   font-family: 'IM Fell English SC', serif;
 }
 
