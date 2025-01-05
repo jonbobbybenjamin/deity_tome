@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taxanomy of Divine Entities</title>
+    <style>
+         .background-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Ensures it's in the background */
+        }
+        label,input{
+            display:flex;
+            flex-direction:column;
+        }
+        input{
+            padding: 10px;
+        }
+
+    </style>
+    <link rel="stylesheet" href="style.css">
+    <!-- Link Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&family=IM+Fell+English+SC&family=Macondo&family=MedievalSharp&family=Metal+Mania&family=New+Rocker&family=Pirata+One&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <img src="images/paper-bkgd.jpg" alt="Background" class="background-img" />
+
+    <!-- Main container -->
+    <div class="container">
+
+        <!-- Header container -->
+        <div class="header-container">
+            <h1>Taxonomy of Divine Entities: </h1>
+        </div>
+
+        <!-- Dropdowns container -->
+        <div class="dropdowns-container">
+            <!-- Head dropdown -->
+            <label for="head">Head:</label>
+            <select id="head" class="dropdown">
+                <option value="" disabled selected>Please select</option>
+                <option value="1">pious elder</option>
+                <option value="2">antlered beast</option>
+            </select>
+
+            <!-- Arms dropdown -->
+            <label for="arms">Arms:</label>
+            <select id="arms" class="dropdown">
+                <option value="" disabled selected>Please select</option>
+                <option value="1">penitent</option>
+                <option value="2">furred</option>
+            </select>
+
+            <!-- Torso dropdown -->
+            <label for="torso">Torso:</label>
+            <select id="torso" class="dropdown">
+                <option value="" disabled selected>Please select</option>
+                <option value="1">robed</option>
+                <option value="2">armored</option>
+            </select>
+
+            <!-- Legs dropdown -->
+            <label for="legs">Legs:</label>
+            <select id="legs" class="dropdown">
+                <option value="" disabled selected>Please select</option>
+                <option value="1">robed</option>
+                <option value="2">hooved</option>
+            </select>
+
+            <!-- Followers dropdown -->
+            <label for="followers">Followers:</label>
+            <select id="followers" class="dropdown">
+                <option value="" disabled selected>Please select</option>
+                <option value="1">revelers</option>
+                <option value="2">cultists</option>
+            </select>
+
+            <!--Hue dropdown
+            <label for="hue">Hue:</label>
+            <select id="hue" class="dropdown">
+                <option value="" disabled selected>Please select</option>
+                <option value="1">Value 1</option>
+                <option value="2">Value 2</option>
+                <option value="3">Value 3</option>
+            </select>
+        -->
+        </div>
+
+        <!-- Name container -->
+        <div class="name-container">
+            <label for="name-input">Name:</label>
+            <input type="text" id="name-input" placeholder="enter name..." />
+        </div>
+
+        <!-- Button container -->
+        <div class="button-container">
+            <button id="show-creature" disabled>Turn the Page</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
