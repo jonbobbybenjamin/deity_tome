@@ -110,16 +110,6 @@
                 <option value="12">mushroom root</option>
             </select>
 
-            <!-- Additional dropdown -->
-            <label for="additional">Additional:</label>
-            <select id="additional" class="dropdown">
-                <option value="" disabled selected>Please select</option>
-                <option value="1">nothing</option>
-                <option value="2">feathered wings</option>
-                <option value="3">demonic wings</option>
-                <option value="4">long cape</option>
-            </select>
-            
             <!-- Followers dropdown -->
             <label for="followers">Followers:</label>
             <select id="followers" class="dropdown">
