@@ -1,187 +1,253 @@
 /* Center body content and apply general styling */
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #ffffff;
-  }
-  
-  /* Main container styles */
+  font-family: 'IM Fell English SC', serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  flex-direction: column;
+  min-height: 100dvh;
+  background-color: #ffffff;
+}
+
+/* Main container styles */
+.container {
+  text-align: center;
+  margin: 0;
+  max-width: 95%; /* Dynamically adjust based on screen size */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0px; /* Space between containers */
+}
+
+/* Header container styles */
+.header-container {
+  text-align: center;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* Name container styles */
+#name-container {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 0px; /* Space between name and creature display */
+}
+
+/* Creature container styles */
+.creature-container {
+  aspect-ratio: 4 / 5; /* Maintain 4:5 aspect ratio */
+  width: 95%; /* Scale dynamically to fit screen width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Creature display styling */
+#creature-display {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%; /* Ensure it inherits the height of the parent container */
+  opacity: 0.8;
+  margin: 0 auto;
+}
+
+/* Creature display images */
+#creature-display img {
+  position: absolute;
+  width: 100%;
+  height: auto; /* Preserve aspect ratio */
+  object-fit: contain;
+}
+
+/* Story container styles */
+.story-container {
+  width: 95%; /* Scale dynamically to fit screen */
+  text-align: justify;
+  /* margin: 10px 0; /* Add vertical spacing */
+  font-family: 'IM Fell English SC', serif; /* Decorative font */
+  letter-spacing: 0.05em;
+  line-height: 85%;
+}
+
+.overlay-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+  z-index: 50; /* Set this above most things */
+}
+
+/* Dropdowns container styles */
+.dropdowns-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  gap: 0px; /* Space between dropdowns */
+}
+
+/* Button container styles */
+.button-container {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Dropdown styles */
+select {
+  display: inline-block; /* Ensure dropdown does not stretch */
+  padding: 3px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  background-color: white;
+  text-align: left;
+  width: auto; /* Dynamically adjust to text width */
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+/* Fonts for specific elements */
+h1 {
+  font-family: 'IM Fell English SC', serif;
+}
+
+h2 {
+  font-family: 'IM Fell English SC', serif;
+}
+
+h3 {
+  font-family: 'IM Fell English SC', serif;
+}
+
+h4 {
+  font-family: 'IM Fell English SC', serif;
+}
+
+label {
+  font-family: 'IM Fell English SC', serif;
+  padding-top: 10px;
+  padding-bottom: 2px;
+}
+
+select option {
+  font-family: 'IM Fell English SC', serif;
+}
+
+button {
+  font-family: 'IM Fell English SC', serif;
+}
+
+input[type="text"] {
+  font-family: 'IM Fell English SC', serif;
+}
+
+#modal-text {
+  font-family: 'IM Fell English SC', serif;
+}
+
+select option {
+  white-space: nowrap; /* Prevent text wrapping in options */
+}
+
+/* Ensure dropdown expands when focused */
+select:focus {
+  outline: none;
+  border-color: #999999; /* Optional: Add a focus color */
+}
+
+/* Additional Fix for Containers */
+.dropdowns-container select {
+  width: auto; /* Prevent container from forcing full width */
+}
+
+/* Placeholder styling for "Please select" */
+select option[disabled] {
+  color: #999;
+}
+
+/* Button styles */
+button {
+  padding: 15px;
+  font-size: 20px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:disabled {
+  background-color: #444444;
+  color: #cccccc;
+  cursor: not-allowed;
+}
+
+button:not(:disabled) {
+  background-color: #000000;
+  color: white;
+}
+
+/* Creature display styles */
+#creature-display {
+  position: relative;
+  width: 100%;
+  height: auto;
+  justify-content: center;
+  margin: 0 auto; /* Center the display horizontally */
+  opacity: 0.8;
+}
+
+/* Images are stacked */
+#creature-display img {
+  position: absolute; /* Stack images */
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  /* Adjust container spacing for smaller screens */
   .container {
-    max-width: 95%; /* Dynamically adjust based on screen size */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0px; /* Space between containers */
+    gap: 0px;
   }
-  
-  /* Header container styles */
-  .header-container {
-    text-align: center;
-    margin: 0px;
-    padding: 0px;
-  }
-  
-  /* Dropdowns container styles */
+
   .dropdowns-container {
-    display: flex;
-    flex-direction: column;
-    padding: 0px;
-    gap: 0px; /* Space between dropdowns */
+    gap: 0px;
   }
-  
-  /* Button container styles */
-  .button-container {
-    padding: 15px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  /* Dropdown styles */
-  select {
-    display: inline-block; /* Ensure dropdown does not stretch */
-    padding: 3px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 2px;
-    background-color: white;
-    text-align: left;
-    width: auto; /* Dynamically adjust to text width */
-    white-space: nowrap; /* Prevent text wrapping */
-  }
-  
-  /* Fonts for specific elements */
-  h1 {
-    font-family: 'IM Fell English SC', serif;
-  }
-  
-  h2 {
-    font-family: 'IM Fell English SC', serif;
-  }
-  
-  h3 {
-    font-family: 'IM Fell English SC', serif;
-  }
-  
-  h4 {
-    font-family: 'IM Fell English SC', serif;
-  }
-  
-  label {
-    font-family: 'IM Fell English SC', serif;
-    padding-top: 10px;
-    padding-bottom: 2px;
-  }
-  
-  select option {
-    font-family: 'IM Fell English SC', serif;
-  }
-  
+
   button {
-    font-family: 'IM Fell English SC', serif;
-  }
-  
-  input[type="text"] {
-    font-family: 'IM Fell English SC', serif;
-  }
-  
-  #modal-text {
-    font-family: 'IM Fell English SC', serif;
-  }
-  
-  select option {
-    white-space: nowrap; /* Prevent text wrapping in options */
-  }
-  
-  /* Ensure dropdown expands when focused */
-  select:focus {
-    outline: none;
-    border-color: #999999; /* Optional: Add a focus color */
-  }
-  
-  /* Additional Fix for Containers */
-  .dropdowns-container select {
-    width: auto; /* Prevent container from forcing full width */
-  }
-  
-  /* Placeholder styling for "Please select" */
-  select option[disabled] {
-    color: #999;
-  }
-  
-  /* Button styles */
-  button {
-    padding: 15px;
     font-size: 20px;
-    border: none;
-    border-radius: 2px;
-    cursor: pointer;
-    transition: background-color 0.3s;
   }
-  
-  button:disabled {
-    background-color: #444444;
-    color: #cccccc;
-    cursor: not-allowed;
-  }
-  
-  button:not(:disabled) {
-    background-color: #000000;
-    color: white;
-  }
-  
-  /* Creature display styles */
-  #creature-display {
-    position: relative;
-    width: 95vmin; /* Scale dynamically to 95% of the smaller screen dimension */
-    margin: 0 auto; /* Center the display horizontally */
-    opacity: 0.8;
-  }
-  
-  /* Images are stacked */
-  #creature-display img {
-    position: absolute; /* Stack images */
-    width: 100%;
-    height: auto; /* Maintain aspect ratio */
-  }
-  
-  /* Responsive tweaks */
-  @media (max-width: 768px) {
-    /* Adjust container spacing for smaller screens */
-    .container {
-      gap: 0px;
-    }
-  
-    .dropdowns-container {
-      gap: 0px;
-    }
-  
-    button {
-      font-size: 20px;
-    }
-  }
-  
-  /* Dynamic button styles */
-  .dynamic-button {
-    display: none; /* Hidden by default */
-    margin-top: 0px;
-    padding: 0px;
-    font-size: 20px;
-    border: none;
-    border-radius: 2px;
-    cursor: pointer;
-    background-color: #000000;
-    color: white;
-    transition: background-color 0.3s;
-    white-space: nowrap; /* Prevent wrapping for dynamic text */
-    z-index: 100;
-  }
-  
-  .dynamic-button:hover {
-    background-color: #222222;
-  }
-  
+}
+
+/* Dynamic button styles */
+.dynamic-button {
+  display: none; /* Hidden by default */
+  margin-top: 0px;
+  padding: 0px;
+  font-size: 20px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  background-color: #000000;
+  color: white;
+  transition: background-color 0.3s;
+  white-space: nowrap; /* Prevent wrapping for dynamic text */
+  z-index: 100;
+}
+
+.dynamic-button:hover {
+  background-color: #222222;
+}

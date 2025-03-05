@@ -46,11 +46,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  /*overflow: hidden;*/
   position: relative;
 }
 
-/* Creature display styling */
+/* Creature display styling 1 */
 #creature-display {
   display: flex;
   justify-content: center;
@@ -62,13 +62,14 @@ body {
   margin: 0 auto;
 }
 
-/* Creature display images */
+/* Creature display images 1
 #creature-display img {
   position: absolute;
   width: 100%;
-  height: auto; /* Preserve aspect ratio */
+  height: auto;
   object-fit: contain;
 }
+*/
 
 /* Story container styles */
 .story-container {
@@ -199,17 +200,18 @@ button:not(:disabled) {
   color: white;
 }
 
-/* Creature display styles */
+/* Creature display styles 2
 #creature-display {
   position: relative;
   width: 100%;
   height: auto;
   justify-content: center;
-  margin: 0 auto; /* Center the display horizontally */
+  margin: 0 auto;
   opacity: 0.8;
 }
+*/
 
-/* Images are stacked */
+/* Creature Display Images 2 */
 #creature-display img {
   position: absolute; /* Stack images */
   width: 100%;

@@ -4,78 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deity View</title>
-    <style>
-        /* Ensure body is styled for text-driven size */
-        body {
-            margin: 0;
-            padding: 0;
-            min-height: 100dvh; /* Use dvh for better mobile compatibility */
-            font-family: 'IM Fell English SC', serif;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-repeat: no-repeat;
-            flex-direction: column;
-        }
-
-        .container {
-            text-align: center;
-            width: 100%;
-            position: absolute;
-            top: 5px;
-        }
-
-        .story-container {
-            max-width: 95%; /* Dynamically adjust based on screen size */
-            display: flex;
-            flex-direction: column;
-            gap: 0px; /* Space between containers */
-            text-align: justify;
-            font-family: 'IM Fell English SC', serif;
-            letter-spacing: .05em;
-            line-height: 85%;
-
-
-        }
-
-        .creature-container {
-            aspect-ratio: 4/5;
-        }
-
-        #creature-display {
-            position: relative;
-            width: 95vmin;
-            height: 95vmin;
-            max-width: 95%;
-            max-height: 95%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            margin: 0px;
-        }
-
-        #creature-display img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            position: absolute;
-        }
-
-        .overlay-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            mix-blend-mode: multiply;
-            z-index: 50; /* Set this above most things */
-        }
-
-
-    </style>
     <link rel="stylesheet" href="style.css">
     <!-- Link Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&family=IM+Fell+English+SC&family=Macondo&family=MedievalSharp&family=Metal+Mania&family=New+Rocker&family=Pirata+One&display=swap" rel="stylesheet">
@@ -85,10 +13,16 @@
     <img src="images/paper-bkgd.jpg" alt="Background" class="overlay-container" />
 
     <div class="container">
+        
+        <!-- name container-->
         <div id="name-container"></div>
-        <div id="creature-container">
-            <div id="creature-display">
+        
+        <!-- creature container-->
+        <div class="creature-container">
+            <div id="creature-display"></div>
         </div>
+        
+        <!-- story container -->
         <div class="story-container">
             <p id="story-text"></p>
         </div>
@@ -106,6 +40,7 @@
                 "7": "A dark wizard possessed by an occult powerful hovered above a platform at the pinnacle of the amalgamation.",
                 "8": "The beast's head snarled, its tusks sharp and fearsome.",
                 "9": "The mighty horns of the great iron helm stretched across the sky.",
+                "10": "The fungus lord's crown cycled through mind-altering hues.",
                 
             },
             torso: {
@@ -117,9 +52,10 @@
                 "6": "Matted fur covered its strong torso.",
                 "7": "A tower, hewn from jagged stone, thrust up toward the sky.",
                 "8": "A corpulent, beastly form made up its core.",
+                "9": "Squinting, fluttering eyes grew and shrank, sometimes gazing directly at an enraptured follower.",
             },
             arms: {
-                "1": "Gleaming gauntlets wrapped around a pair of god-forged daggers.",
+                "1": "Gleaming gauntlets ending in god-forged spiked globes were ever ready to mete out divine punishment.",
                 "2": "In the maternal grip was a divine babe, an eternal innocent being of pure joy.",
                 "3": "Heaving twisted branches came down in two massive arms.",
                 "4": "Weathered, hollow logs were set to its sides in the form of mishapen arms.",
@@ -127,6 +63,7 @@
                 "6": "Tortured souls screamed in its demonic grip.",
                 "7": "Crackling dark energy emenated all around it.",
                 "8": "It's hooved arms illuminated the land with divine firelight.",
+                "9": "New sprouts branched out, their gills exhaling a soup of drifting spores.",
         
             },
             legs: {
@@ -141,11 +78,16 @@
                 "9": "It was mounted on a mighty war horse.",
                 "10": "Its four, equine legs, glistened with sweat over their coat of fur.",
                 "11": "A wild beast was its steed, its antlers spanned the sky.",
+                "12": "The mighty stem grew deep in the earth, and from the center of that fleshy trunk a massive, unblinking eye saw all.",
             },
 
             followers: {
                 "1": "The highest priests and clerics and the lowliest peasants and paupers chanted in concert... [name]! [name]! [name]! Heed our call!",
                 "2": "A sea of voices echoed into the darkness as a hoard of cultists hissed its name... [name]!!!",
+                "3": "Ecstatic revelers breathed deep and sighed out the name... [name]...",
+                "4": "Bickering philosophers debated the true nature of the being, asking if their imperfect minds could conceive of the perfection that is [name]?",
+                "5": "Battle hardened warriors beat their chests and shouted in a mighty war call... [name]... Smight our enemies and bathe us in their blood!",
+                "6": "Only a lone, dying man, hovering between this plane and the next, was ever able to perceive the deity. With his last breath he whispered... [name]...",
             },
         };
 
@@ -181,10 +123,10 @@
 
         // Populate the creature display based on stored data
         const parts = [
+            { key: 'additional', prefix: 'back' },
             { key: 'arms', prefix: 'backarm' },
             { key: 'legs', prefix: 'legs' },
             { key: 'torso', prefix: 'torso' },
-            //{ key: 'arms', prefix: 'backshoulder' },
             { key: 'head', prefix: 'head' },
             { key: 'followers', prefix: 'followers' },
             { key: 'arms', prefix: 'frontarm' },
