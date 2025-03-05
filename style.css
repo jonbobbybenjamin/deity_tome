@@ -23,6 +23,7 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 0px; /* Space between containers */
+  transform: translateZ(0); 
 }
 
 /* Header container styles */
