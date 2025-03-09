@@ -93,9 +93,11 @@ body {
   mix-blend-mode: multiply;
   z-index: 50; /* Set this above most things */
   pointer-events: none;
-  /*will-change: transform;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
   backface-visibility: hidden;
-  transform: translate3d(0, 0, 0);*/
+  -webkit-backface-visibility: hidden;
 }
 
 /*.overlay-container {
