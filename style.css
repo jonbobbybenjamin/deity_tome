@@ -90,7 +90,7 @@ body {
   height: 100vh;
   background: url("images/paper-bkgd.jpg") no-repeat center center;
   background-size: cover;
-  background-blend-mode: multiply;
+  mix-blend-mode: multiply;
   z-index: 50; /* Set this above most things */
   pointer-events: none;
   /*will-change: transform;
