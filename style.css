@@ -1,5 +1,6 @@
 /* Center body content and apply general styling */
 body {
+  isolation: isolate;
   font-family: 'IM Fell English SC', serif;
   text-align: center;
   margin: 0;
@@ -23,7 +24,6 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 0px; /* Space between containers */
-  transform: translateZ(0); 
 }
 
 /* Header container styles */
