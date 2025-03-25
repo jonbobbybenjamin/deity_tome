@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deity View</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Link Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English&family=IM+Fell+English+SC&family=Macondo&family=MedievalSharp&family=Metal+Mania&family=New+Rocker&family=Pirata+One&display=swap" rel="stylesheet">
+ 
+</head>
+<body>
+    <div class="overlay-container"></div>
+
+    <div class="container">
+        
+        <!-- name container-->
+        <div id="name-container"></div>
+        
+        <!-- creature container-->
+        <div class="creature-container">
+            <div id="creature-display"></div>
+        </div>
+        
+        <!-- story container -->
+        <div class="story-container">
+            <p id="story-text"></p>
+        </div>
+    </div>
+
+    <script>
+        const textMap = {
+            head: {
+                "1": "The god's head was hidden beneath a gleaming iron helm.",
+                "2": "The goddess' head was crowned in radiant light.",
+                "3": "A towering canopy of leaves wreathed the being's head.",
+                "4": "A crude efigy painted onto an old rotting tree gazed lifelessy into the distance.",
+                "5": "Behold! The magnificent horn of the sea prince pierced the clouds!",
+                "6": "The demon gnashed its horrible maw as it devoured the faithless.",
+                "7": "A dark wizard possessed by an occult powerful hovered above a platform at the pinnacle of the amalgamation.",
+                "8": "The beast's head snarled, its tusks sharp and fearsome.",
+                "9": "The mighty horns of the great iron helm stretched across the sky.",
+                "10": "The fungus lord's crown cycled through mind-altering hues.",
+                
+            },
+            torso: {
+                "1": "Sturdy iron armor wrapped its broad chest.",
+                "2": "A simple tunic wrapped the maidenly torso.",
+                "3": "A gnarled trunk creaked as it shifted its weight.",
+                "4": "Its chest was a cage, bound by dark magic, full of sacrificed souls.",
+                "5": "Its core shimmered as its scales caught the light.",
+                "6": "Matted fur covered its strong torso.",
+                "7": "A tower, hewn from jagged stone, thrust up toward the sky.",
+                "8": "A corpulent, beastly form made up its core.",
+                "9": "Squinting, fluttering eyes grew and shrank, sometimes gazing directly at an enraptured follower.",
+            },
+            arms: {
+                "1": "Gleaming gauntlets ending in god-forged spiked globes were ever ready to mete out divine punishment.",
+                "2": "In the maternal grip was a divine babe, an eternal innocent being of pure joy.",
+                "3": "Heaving twisted branches came down in two massive arms.",
+                "4": "Weathered, hollow logs were set to its sides in the form of mishapen arms.",
+                "5": "Beautiful fins sprung from its body",
+                "6": "Tortured souls screamed in its demonic grip.",
+                "7": "Crackling dark energy emenated all around it.",
+                "8": "It's hooved arms illuminated the land with divine firelight.",
+                "9": "New sprouts branched out, their gills exhaling a soup of drifting spores.",
+        
+            },
+            legs: {
+                "1": "Shining armor covered its legs and feet.",
+                "2": "A radiant dress fell around it, reaching the ground.",
+                "3": "Strong roots sprung from the end of its trunk.",
+                "4": "A mishmash of posts and logs were constructed into makeshift legs.",
+                "5": "A mighty scaled and finned tail coiled into the waves behind it.",
+                "6": "Cloven hooves thundered against the ground, beastly skulls were woven into its belt.",
+                "7": "The base of the tower was cut from sheer rock, impenetrable.",
+                "8": "Muscly haunches, covered in bristles, quivered, and a tail flicked behind it.",
+                "9": "It was mounted on a mighty war horse.",
+                "10": "Its four, equine legs, glistened with sweat over their coat of fur.",
+                "11": "A wild beast was its steed, its antlers spanned the sky.",
+                "12": "The mighty stem grew deep in the earth, and from the center of that fleshy trunk a massive, unblinking eye saw all.",
+            },
+
+            followers: {
+                "1": "The highest priests and clerics and the lowliest peasants and paupers chanted in concert... [name]! [name]! [name]! Heed our call!",
+                "2": "A sea of voices echoed into the darkness as a hoard of cultists hissed its name... [name]!!!",
+                "3": "Ecstatic revelers breathed deep and sighed out the name... [name]...",
+                "4": "Bickering philosophers debated the true nature of the being, asking if their imperfect minds could conceive of the perfection that is [name]?",
+                "5": "Battle hardened warriors beat their chests and shouted in a mighty war call... [name]... Smight our enemies and bathe us in their blood!",
+                "6": "Only a lone, dying man, hovering between this plane and the next, was ever able to perceive the deity. With his last breath he whispered... [name]...",
+            },
+        };
+
+        const creatureData = JSON.parse(localStorage.getItem('creatureData')) || {};
+        const storyText = document.getElementById('story-text');
+        const creatureDisplay = document.getElementById('creature-display');
+        const nameContainer = document.getElementById('name-container');
+
+        // Display name or input - outdated, still displays name
+        if (creatureData.name) {
+            displayName(creatureData.name);
+        } else {
+            displayInput();
+        }
+
+        // Define the order of the parts
+        const displayOrder = ['head', 'torso', 'arms', 'legs', 'followers'];
+
+        function generateStoryText() {
+            const name = creatureData.name || "Unnamed Creature";
+            const songLines = displayOrder.map((key) => {
+                const value = creatureData[key];
+                if (value && textMap[key]?.[value]) {
+                    return textMap[key][value].replace(/\[name\]/g, name);
+                }
+                return "";
+            });
+            return songLines.filter(Boolean).join(" ");
+        }
+
+        // Populate story-container with dynamic text
+        storyText.textContent = generateStoryText();
+
+        // Populate the creature display based on stored data
+        const parts = [
+            { key: 'additional', prefix: 'back' },
+            { key: 'arms', prefix: 'backarm' },
+            { key: 'legs', prefix: 'legs' },
+            { key: 'torso', prefix: 'torso' },
+            { key: 'head', prefix: 'head' },
+            { key: 'followers', prefix: 'followers' },
+            { key: 'arms', prefix: 'frontarm' },
+        ];
+
+        parts.forEach(part => {
+            const value = creatureData[part.key];
+            if (value) {
+                const img = document.createElement('img');
+                img.src = `images/${part.prefix}${value}.png`;
+                img.alt = `${part.prefix}${value}`;
+                creatureDisplay.appendChild(img);
+            }
+        });
+
+        // Function to replace [name] placeholders with the actual name
+        function replacePlaceholders(text, name) {
+            return text.replace(/\[name\]/g, name);
+        }
+
+
+        // Display the creature name
+        function displayName(name) {
+            nameContainer.innerHTML = `<h3 id="creature-name">${name}</h3>`;
+        }
+        
+    </script>
+</body>
+</html>
